@@ -1,29 +1,151 @@
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Profil</title>
+    <link rel="stylesheet" href="./style_profie.css">
 </head>
-<body>
-<h1>Profilku</h1>
 
-    <img src="./RavenImg.png" alt="Gambar Profil" style="width: 200px; height: 200px; border-radius: 50%;">
-    <h2>Raven Daniel Martin</h2>
-    <p>Deskripsi Diri:</p>
-    <p>Saya adalah lulusan Teknik Informatika Binus University. Saat ini saya bekerja sebagai MT IT di FIFGROUP. Saya memiliki minat yang besar dalam mempelajari teknologi baru dan mengembangkan keterampilan saya di bidang IT dan Data.</p>
-    <a href ="https://www.linkedin.com/in/ravendm">LinkedIn</a>
-    <p>Hobi:</p>
-    <ol>
-        <li>Membaca Buku</li>
-        <li>Bermain Game</li>
-        <li>Bermain Musik</li>
-    </ol>
-    <p>Mari Berkenalan!</p>
-    <form action="">
-        <input type="text" placeholder="Masukkan Nama Anda"><br>
-        <input type="email" placeholder="Masukkan Email Anda"><br>
-        <input type="submit" value="Kirim">
-    <p>Video Favorit:</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/L35fFDpwIM4?si=ftUrVL5kSrnxS433" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<body>
+    <main class="main-section">
+        <div class="main-menu-absolute">
+            <a href="#" class="main-menu-link">Works</a>
+            <a href="#" class="main-menu-link">Blog</a>
+            <a href="#" class="main-menu-link">Contact</a>
+        </div>
+        <div class="profile-container">
+            <div class="profile-info" style="margin-top: 50px;">
+                <h2>Raven Daniel Martin</h2>
+                <h3>Data and Technology Management Trainee</h3>
+                <p class="description">Saya adalah lulusan Teknik Informatika Binus University. Saat ini saya bekerja
+                    sebagai MT Data dan IT di FIFGROUP. Saya memiliki minat yang besar dalam mempelajari teknologi baru
+                    dan mengembangkan keterampilan saya
+                    di bidang IT dan Data.</p>
+                <p><strong>Hobi:</strong></p>
+                <ol>
+                    <li>Membaca Buku</li>
+                    <li>Bermain Game</li>
+                    <li>Bermain Musik</li>
+                </ol>
+            </div>
+            <div class="profile-photo">
+                <img src="./RavenImg.png" alt="Gambar Profil">
+            </div>
+        </div>
+        <div class="profile-download">
+            <button class="download-button">
+                <p>Download Resume</p>
+            </button>
+        </div>
+        <section class="recent-post-section">
+            <div class="recent-post-header-row">
+                <h3>Recent Post</h3>
+                <a href="#" class="recent-post-viewall">View All</a>
+            </div>
+            <div class="recent-post-list">
+                <div class="recent-post-item">
+                    <div class="recent-post-header">
+                        <span class="recent-post-title">Belajar Data Science</span>
+                        <span class="recent-post-date">20 Juni 2025</span>
+                        <span class="recent-post-category">Data</span>
+                    </div>
+                    <div class="recent-post-desc">Tips dan pengalaman awal memulai belajar data science untuk pemula.
+                    </div>
+                </div>
+                <div class="recent-post-item">
+                    <div class="recent-post-header">
+                        <span class="recent-post-title">Tips Efektif Belajar IT</span>
+                        <span class="recent-post-date">15 Juni 2025</span>
+                        <span class="recent-post-category">IT</span>
+                    </div>
+                    <div class="recent-post-desc">Cara mengatur waktu dan strategi belajar IT agar lebih produktif.
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="featured-work-section">
+            <h3>Featured Works</h3>
+            <div class="featured-work-list">
+                <div class="featured-work-item">
+                    <img src="./Indonesia.jpeg" alt="Aplikasi Analisis Data" class="featured-work-img">
+                    <div class="featured-work-info">
+                        <div class="featured-work-title-row">
+                            <span class="featured-work-title">Aplikasi Analisis Data</span>
+                            <span class="featured-work-year">2024</span>
+                        </div>
+                        <div class="featured-work-desc">Aplikasi web untuk visualisasi dan analisis data sederhana.
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-work-item">
+                    <img src="./Japan.jpeg" alt="Website Portfolio" class="featured-work-img">
+                    <div class="featured-work-info">
+                        <div class="featured-work-title-row">
+                            <span class="featured-work-title">Website Portfolio</span>
+                            <span class="featured-work-year">2023</span>
+                        </div>
+                        <div class="featured-work-desc">Website pribadi untuk menampilkan karya dan pengalaman.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="video-section">
+            <p><strong>Video Favorit:</strong></p>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/L35fFDpwIM4?si=ftUrVL5kSrnxS433"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <section class="berkenalan-section">
+            <h3>Mari Berkenalan!</h3>
+            <form action="">
+                <input type="text" placeholder="Masukkan Nama Anda"><br>
+                <input type="email" placeholder="Masukkan Email Anda"><br>
+                <input type="submit" value="Kirim">
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <span class="footer-title">Temui saya di:</span>
+            <div class="footer-icons">
+                <a href="https://www.linkedin.com/in/ravendm" target="_blank" class="footer-link" aria-label="LinkedIn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="24" rx="4" fill="#0A66C2" />
+                        <path
+                            d="M7.5 8.5C8.32843 8.5 9 7.82843 9 7C9 6.17157 8.32843 5.5 7.5 5.5C6.67157 5.5 6 6.17157 6 7C6 7.82843 6.67157 8.5 7.5 8.5Z"
+                            fill="white" />
+                        <rect x="6" y="10" width="3" height="8" rx="1.5" fill="white" />
+                        <path
+                            d="M13 10H15.5C16.3284 10 17 10.6716 17 11.5V18H14V13.5C14 13.2239 13.7761 13 13.5 13C13.2239 13 13 13.2239 13 13.5V18H10V10H13Z"
+                            fill="white" />
+                    </svg>
+                </a>
+                <a href="https://instagram.com/raven_dm" target="_blank" class="footer-link" aria-label="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="24" rx="4" fill="#E1306C" />
+                        <circle cx="12" cy="12" r="5" stroke="white" stroke-width="2" />
+                        <circle cx="17.2" cy="6.8" r="1.2" fill="white" />
+                    </svg>
+                </a>
+                <a href="https://github.com/Raven-DM" target="_blank" class="footer-link" aria-label="GitHub">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="24" rx="4" fill="#222" />
+                        <path
+                            d="M12 17.5C16.1421 17.5 19.5 14.1421 19.5 10C19.5 5.85786 16.1421 2.5 12 2.5C7.85786 2.5 4.5 5.85786 4.5 10C4.5 14.1421 7.85786 17.5 12 17.5Z"
+                            fill="white" />
+                        <path d="M9.5 14.5C9.5 13.1193 10.6193 12 12 12C13.3807 12 14.5 13.1193 14.5 14.5" stroke="#222"
+                            stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                </a>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2025 Raven Daniel Martin. All rights reserved.
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
