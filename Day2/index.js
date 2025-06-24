@@ -27,13 +27,32 @@ const person = [
 
 // console.log(person[0].name);
 
-let x = 2;
-let y = '2';
+// let x = 2;
+// let y = '2';
 
-// console.log(x += y);
-console.log(x == y)
+// // console.log(x += y);
+// console.log(x == y)
 
-let age = 10
-console.log(age >= 18 && age <= 55 ? 'Legal' : age > 56 ? 'Not Legal' : 'Undefined age');
+// let age = 10
+// console.log(age >= 18 && age <= 55 ? 'Legal' : age > 56 ? 'Not Legal' : 'Undefined age');
+
+
+// //Rest
+// let object = {
+//     name: 'Raven',
+//     age: 26,
+//     jurusan: 'Teknik Informatika'
+// }
+
+// const {name,...otherInfo} = object;
+// console.log(otherInfo);
+
+// //Spread
+// const user = { name: "Raven", age: 26};
+// const location = {city: "Jakarta"};
+
+// const profile = {...user,...location};
+// console.log(profile)
+
 
 

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Data Pengajuan Leasing</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Daftar Pengajuan Leasing</h2>
+
+    <table id="tabelPengajuan">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Umur</th>
+                <th>DP</th>
+                <th>Harga Motor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data akan dimasukkan ke sini -->
+        </tbody>
+    </table>
+
+    <h2>Daftar Pengajuan Disetujui</h2>
+
+    <table id="tabelApproved">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Umur</th>
+                <th>DP</th>
+                <th>Harga Motor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data akan dimasukkan ke sini -->
+        </tbody>
+    </table>
+
+    <h2>Daftar Cicilan Pengajuan</h2>
+
+    <table id="tabelCicilan">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>DP 30%</th>
+                <th>Bunga</th>
+                <th>Cicilan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data akan dimasukkan ke sini -->
+        </tbody>
+    </table>
+
+    <!-- Script Daftar Pengajuan Leasing -->
+    <script>
+        async function tampilkanData() {
+            try {
+                const res = await fetch("https://68598a7a138a18086dfec989.mockapi.io/dummy-fif/DummyDataUser");
+                console.log('res: ', res)
+                const data = await res.json();
+                console.log('Data: ', data)
+
+                const tbody = document.querySelector("#tabelPengajuan tbody");
+                tbody.innerHTML = ""; // kosongkan dulu
+
+                data.forEach((pengajuan, index) => {
+                    const row = `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${pengajuan.name}</td>
+              <td>${pengajuan.age}</td>
+              <td>Rp ${parseInt(pengajuan.dp).toLocaleString()}</td>
+              <td>Rp ${parseInt(pengajuan.price).toLocaleString()}</td>
+            </tr>
+          `;
+                    tbody.innerHTML += row;
+                });
+            } catch (err) {
+                console.error("Gagal mengambil data:", err);
+            }
+        }
+
+        // Panggil fungsi otomatis saat halaman selesai dimuat
+        document.addEventListener("DOMContentLoaded", tampilkanData);
+    </script>
+
+    <!-- Script Pengajuan Disetujui -->
+
+    <script>
+        async function tampilkanData() {
+            try {
+                const res = await fetch("https://68598a7a138a18086dfec989.mockapi.io/dummy-fif/DummyDataUser");
+                console.log('res: ', res)
+                const data = await res.json();
+                console.log('Data: ', data)
+
+                const tbody = document.querySelector("#tabelApproved tbody");
+                tbody.innerHTML = ""; // kosongkan dulu
+
+
+                const approvedData = data.filter(pengajuan => {
+                    const usia = parseInt(pengajuan.age);
+                    return usia >= 21 && usia <= 55
+                });
+
+                approvedData.forEach((pengajuan, index) => {
+                    const row = `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${pengajuan.name}</td>
+              <td>${pengajuan.age}</td>
+              <td>Rp ${parseInt(pengajuan.dp).toLocaleString()}</td>
+              <td>Rp ${parseInt(pengajuan.price).toLocaleString()}</td>
+            </tr>
+          `;
+                    tbody.innerHTML += row;
+                });
+            } catch (err) {
+                console.error("Gagal mengambil data:", err);
+            }
+        }
+
+        // Panggil fungsi otomatis saat halaman selesai dimuat
+        document.addEventListener("DOMContentLoaded", tampilkanData);
+    </script>
+
+    <!-- Script Cicilan Pengajuan -->
+
+    <script>
+        async function tampilkanData() {
+            try {
+                const res = await fetch("https://68598a7a138a18086dfec989.mockapi.io/dummy-fif/DummyDataUser");
+                console.log('res: ', res)
+                const data = await res.json();
+                console.log('Data: ', data)
+
+                const tbody = document.querySelector("#tabelCicilan tbody");
+                tbody.innerHTML = ""; // kosongkan dulu
+
+                const increData = data.filter(pengajuan => {
+                    const usia = parseInt(pengajuan.age);
+                    return usia >= 21 && usia <= 55
+                });
+                increData.forEach((pengajuan, index) => {
+                    const harga = parseFloat(pengajuan.price)
+                    const dp = pengajuan.price * 0.3
+                    const pinjaman = harga-dp
+                    const bunga = 0.1 * pinjaman
+                    const tenor = 12
+                    const totalPembayaran = pinjaman + bunga;
+                    const cicilanBulanan = totalPembayaran / tenor;
+                    const row = `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${pengajuan.name}</td>
+              <td>Rp ${parseInt(dp).toLocaleString()}</td>
+              <td>Rp ${parseInt(Math.round(bunga)).toLocaleString()}</td>
+              <td>Rp ${parseInt(Math.round(cicilanBulanan)).toLocaleString()}</td>
+            </tr>
+          `;
+                    tbody.innerHTML += row;
+                });
+            } catch (err) {
+                console.error("Gagal mengambil data:", err);
+            }
+        }
+
+        // Panggil fungsi otomatis saat halaman selesai dimuat
+        document.addEventListener("DOMContentLoaded", tampilkanData);
+    </script>
+</body>
+
+</html>
