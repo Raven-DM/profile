@@ -15,16 +15,19 @@
   <label>Uang Muka (DP) (Rp):</label><br>
   <input type="number" id="dp" /><br><br>
 
-  <label>Tenor (bulan):</label><br>
+  <label>Bunga pertahun:</label><br>
   <select id="tenor">
-    <option value="12">12 bulan</option>
-    <option value="24">24 bulan</option>
-    <option value="36">36 bulan</option>
-    <option value="48">48 bulan</option>
+    <option value="12">12 bulan -> 5%</option>
+    <option value="24">24 bulan -> 8%</option>
+    <option value="36">36 bulan -> 10%</option>
+    <option value="48">48 bulan -> 12%</option>
   </select><br><br>
 
-  <label>Bunga per Tahun (%):</label><br>
-  <input type="number" id="bunga" placeholder="Contoh: 8" /><br><br>
+  <!-- <label>Bunga per Tahun (%):</label><br>
+  <input type="number" id="bunga" placeholder="Contoh: 8" /><br><br> -->
+
+  <label>Pemasukan per Bulan (Rp):</label><br>
+  <input type="number" id="pemasukan" /><br><br>
 
   <button onclick="hitungCicilan()">Hitung Cicilan</button>
 
@@ -36,13 +39,18 @@
       const harga = parseFloat(document.getElementById("hargaMotor").value);
       const dp = parseFloat(document.getElementById("dp").value);
       const tenor = parseInt(document.getElementById("tenor").value);
-      const bungaInput = parseFloat(document.getElementById("bunga").value);
       const hasilDiv = document.getElementById("hasil");
+      const pemasukan = parseFloat(document.getElementById("pemasukan").value);
 
       // Validasi input
-      if (isNaN(harga) || isNaN(dp) || isNaN(bungaInput)) {
+      if (isNaN(harga) || isNaN(dp) || isNaN(pemasukan)) {
         hasilDiv.innerHTML = "<span style='color:red;'>Harga, DP, dan Bunga harus diisi dengan angka.</span>";
         return;
+      }
+
+      //Validasi pemasukan minimum
+      if (pemasukan < 3000000) {
+        hasilDiv.innerHTML = `<span style='color:red;'>Maaf, pemasukan Anda harus minimal Rp 3.000.000 untuk melakukan pengajuan cicilan.</span>`;
       }
 
       // buat kondisi ketika dp kurang dari 30%
@@ -51,9 +59,31 @@
         hasilDiv.innerHTML = `<span style='color:red;'>DP minimal 30% sebesar Rp ${dpMinimal}.</span>`;
         return;
       }
-      // buat perhitungan bunga
       const pinjaman = harga - dp;
-      const bungaTotal = (pinjaman * (bungaInput / 100) * tenor) / 12;
+
+      // Penentuan bunga berdasarkan tenor
+      let bungaInput = 0;
+      switch (tenor) {
+        case 12:
+          bungaInput = 5;
+          break;
+        case 24:
+          bungaInput = 8;
+          break;
+        case 36:
+          bungaInput = 10;
+          break;
+        case 48:
+          bungaInput = 12;
+          break;
+        default:
+          break;
+      }
+
+      // buat perhitungan bunga
+
+      const bungaTotal = (pinjaman * (bungaInput / 100));
+
       // Perhitungan
       const totalPembayaran = pinjaman + bungaTotal;
       const cicilanBulanan = totalPembayaran / tenor;
@@ -63,7 +93,7 @@
         <p>Harga Motor: Rp ${harga.toLocaleString()}</p>
         <p>DP: Rp ${dp.toLocaleString()}</p>
         <p>Pinjaman: Rp ${pinjaman.toLocaleString()}</p>
-        <p>Bunga: ${bungaInput}%</p>
+        <p>Bunga per tahun: ${bungaInput}%</p>
         <p>Total Pembayaran: Rp ${totalPembayaran.toLocaleString()}</p>
         <p><strong>Cicilan per bulan: Rp ${cicilanBulanan.toLocaleString(undefined, { maximumFractionDigits: 0 })}</strong></p>
       `;
