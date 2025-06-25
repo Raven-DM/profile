@@ -1,0 +1,4 @@
+<h1 align="center">Reactive Form</h1>
+
+<app-input-component (formSubmitted)="onFormSubmit($event)"></app-input-component>
+<app-table [childrenData]="parentData" (onDelete)="hapusData($event)"></app-table>

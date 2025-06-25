@@ -1,0 +1,36 @@
+<h2 align="center">Input Forms</h2>
+
+<form [formGroup]="userForm" (ngSubmit)="submit()">
+    <div class="formName">
+        <label for="name">
+            Nama:
+            <input type="text" formControlName="name"/>
+        </label>
+        <div *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">
+            Please fill the name
+        </div>
+        <div *ngIf="userForm.get('name')?.errors?.['minLength']">
+            Karakter nama minimal 3
+        </div>
+    </div>
+    <div class="formUmur">
+        <label for="umur">
+            Umur:
+            <input type="number" formControlName="age" />
+        </label>
+        <div *ngIf="userForm.get('age')?.invalid && userForm.get('age')?.touched">
+            Please fill the age
+        </div>
+    </div>
+    <div>
+        <label for="job">
+            Pekerjaan:
+            <input type="text" formControlName="job" />
+        </label>
+        <div *ngIf="userForm.get('job')?.invalid && userForm.get('job')?.touched">
+        Please fill the job
+        </div>
+    </div>
+    <button type="submit">Add to Table</button>
+</form>
+

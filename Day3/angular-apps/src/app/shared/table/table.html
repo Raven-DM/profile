@@ -1,0 +1,33 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+
+
+
+<h2 align="center">Customer List</h2>
+
+<table border="1" [cellPadding]="10" [cellSpacing]="0">
+    <thead>
+        <tr>
+            <th>Nomor</th>
+            <th>Nama</th>
+            <th>Umur</th>
+            <th>Pekerjaan</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of childrenData; let i = index">
+            <td align="center">{{i + 1}}</td>
+            <td align="center">{{item.name}}</td>
+            <td align="center">{{item.age}}</td>
+            <td align="center">{{item.job ? item.job : 'Pengangguran'}}</td>
+            <td align="center">
+                <button (click)="hapusData(i)" title="Hapus">
+                    <i class="fas fa-trash"></i>
+                </button>   
+            </td>
+        </tr>
+    </tbody>
+</table>
